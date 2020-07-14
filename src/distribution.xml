@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <title>W3Champions</title>
+    <background file="images/background.png" mime-type="image/png" scaling="tofit" />
+    <background-darkAqua file="images/background.png" mime-type="image/png" scaling="tofit"/>
+
+    <pkg-ref id="org.w3champions.installer"/>
+    <options customize="never" require-scripts="false"/>
+    <choices-outline>
+        <line choice="default">
+            <line choice="org.w3champions.installer"/>
+        </line>
+    </choices-outline>
+    <choice id="default"/>
+    <choice id="org.w3champions.installer" visible="false">
+        <pkg-ref id="org.w3champions.installer"/>
+    </choice>
+    <pkg-ref id="org.w3champions.installer" version="0" onConclusion="none">plain.pkg</pkg-ref>
+</installer-gui-script>

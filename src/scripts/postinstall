@@ -1,0 +1,56 @@
+#!/bin/bash
+MAPS_FOLDER="${HOME}/Library/Application Support/Blizzard/Warcraft III/Maps"
+APPLICATION_FOLDER="/Applications/Warcraft III"
+RETAIL_FOLDER="${APPLICATION_FOLDER}/_retail_"
+CURRENT_FOLDER="${PWD}";
+PACKAGE_FOLDER="/var/tmp/W3Champions"
+
+
+validArguments() {
+  SOURCE=$1;
+  TARGET=$2
+
+  if [ -d "${TARGET}" ]; then
+    if [ -d "${SOURCE}" ]; then
+      true
+    else
+      false
+    fi
+  else
+    false
+  fi
+}
+
+copyFile(){
+  FILE=$1;
+  TARGET=$2
+  SOURCE="${PACKAGE_FOLDER}/${FILE}"
+
+  if validArguments "${SOURCE}" "${TARGET}"; then
+    cp -R "${SOURCE}" "${TARGET}"
+    chmod -R 0777 "${TARGET}/${FILE}"
+  fi
+}
+
+deleteFile() {
+  FILE=$1;
+  TARGET=$2
+
+  if [ -d "${TARGET}/${FILE}" ]; then
+     rm -rf "${TARGET}/${FILE}"
+  fi
+}
+
+overwriteFile() {
+  FILE=$1;
+  TARGET=$2
+
+  deleteFile "${FILE}" "${TARGET}"
+  copyFile "${FILE}" "${TARGET}"
+
+}
+
+overwriteFile "W3Champions" "${MAPS_FOLDER}"
+overwriteFile "webui" "${APPLICATION_FOLDER}"
+overwriteFile "webui" "${RETAIL_FOLDER}"
+sudo rm -rf "${PACKAGE_FOLDER}"
