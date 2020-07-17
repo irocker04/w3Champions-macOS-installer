@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <installer-gui-script minSpecVersion="1">
     <title>W3Champions</title>
-    <background file="images/background.png" mime-type="image/png" scaling="tofit" />
-    <background-darkAqua file="images/background.png" mime-type="image/png" scaling="tofit"/>
+    <background file="images/background_light.png" mime-type="image/png" scaling="tofit" />
+    <background-darkAqua file="images/background_dark.png" mime-type="image/png" scaling="tofit"/>
 
     <pkg-ref id="org.w3champions.installer"/>
     <options customize="never" require-scripts="false"/>

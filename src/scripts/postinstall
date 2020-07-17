@@ -54,3 +54,4 @@ overwriteFile "W3Champions" "${MAPS_FOLDER}"
 overwriteFile "webui" "${APPLICATION_FOLDER}"
 overwriteFile "webui" "${RETAIL_FOLDER}"
 sudo rm -rf "${PACKAGE_FOLDER}"
+sudo -u ${USER} defaults write "com.blizzard.Warcraft III" "Allow Local Files" -int 1
